@@ -1,13 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import HomeCard from "./HomeCard";
+import HomeCard from "./cards/HomeCard";
 import { useRouter } from "next/navigation";
+import MeetingModal from "./modals/MeetingModal";
 
 const MeetingTypesList = () => {
   const [meetingState, setMeetingState] = useState<
-    "isJoiningMeeting" | "isScheduleMeeting" | "isInstantMeeting" | undefined
+    "isInstantMeeting" | "isJoiningMeeting" | "isScheduleMeeting" | undefined
   >();
+
+  const createMeeting = () => {};
 
   const router = useRouter();
 
@@ -18,7 +21,7 @@ const MeetingTypesList = () => {
         title="New meeting"
         description="Start an instant meeting"
         handleClick={() => {
-          setMeetingState("isJoiningMeeting");
+          setMeetingState("isInstantMeeting");
         }}
         className="bg-orange-1"
       />
@@ -44,10 +47,17 @@ const MeetingTypesList = () => {
         img="/icons/recordings.svg"
         title="Recorded"
         description="Meetings you've recorded"
-        handleClick={() => {
-          setMeetingState("isInstantMeeting");
-        }}
+        handleClick={() => router.push("/recordings")}
         className="bg-yellow-1"
+      />
+
+      <MeetingModal
+        isOpen={meetingState === "isInstantMeeting"}
+        onClose={() => setMeetingState(undefined)}
+        title="Start an Instant Meeting"
+        className="text-center"
+        buttonText="Start Meeting"
+        handleClick={createMeeting}
       />
     </section>
   );
