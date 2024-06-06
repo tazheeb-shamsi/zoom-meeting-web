@@ -16,6 +16,7 @@ const CallList = ({ type }: { type: "upcoming" | "ended" | "recordings" }) => {
     useGetCalls();
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
   const { toast } = useToast();
+
   const getCalls = () => {
     switch (type) {
       case "ended":
@@ -37,7 +38,7 @@ const CallList = ({ type }: { type: "upcoming" | "ended" | "recordings" }) => {
       case "recordings":
         return "No Recordings!";
       case "upcoming":
-        return "No Upcoming Calls";
+        return "No Upcoming Meetings!";
 
       default:
         return "";
