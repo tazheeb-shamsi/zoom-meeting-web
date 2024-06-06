@@ -8,8 +8,8 @@ import { useToast } from "./ui/use-toast";
 import { Textarea } from "./ui/textarea";
 import ReactDatePicker from "react-datepicker";
 import { Input } from "./ui/input";
-import HomeCard from "./Cards/HomeCard";
-import MeetingModal from "./Modals/MeetingModal";
+import HomeCard from "./cards/HomeCard";
+import MeetingModal from "./modals/MeetingModal";
 
 const MeetingTypesList = () => {
   const [meetingState, setMeetingState] = useState<

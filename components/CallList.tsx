@@ -5,9 +5,9 @@ import React, { useEffect, useState } from "react";
 import { useGetCalls } from "@/hooks/useGetCalls";
 import { useRouter } from "next/navigation";
 import { Call, CallRecording } from "@stream-io/video-react-sdk";
-import Loader from "./Loaders/Loader";
+import Loader from "./loaders/Loader";
 import { useToast } from "./ui/use-toast";
-import MeetingCard from "./Cards/MeetingCard";
+import MeetingCard from "./cards/MeetingCard";
 
 const CallList = ({ type }: { type: "upcoming" | "ended" | "recordings" }) => {
   const router = useRouter();
