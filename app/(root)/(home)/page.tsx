@@ -4,7 +4,7 @@
 import React from "react";
 import MeetingTypesList from "../../../components/MeetingTypesList";
 import { useGetCalls } from "@/hooks/useGetCalls";
-import Loader from "@/components/loaders/Loader";
+import Loader from "../../../components/loaders/Loader";
 
 const Home = () => {
   const currentDateTime = new Date();
