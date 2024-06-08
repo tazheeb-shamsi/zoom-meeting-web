@@ -1,16 +1,8 @@
-import { StreamVideoProvider } from "@/providers/StreamClientProvider";
-import { Metadata } from "next";
-import React, { ReactNode } from "react";
+import { ReactNode } from 'react';
 
-export const metadata: Metadata = {
-  title: "Platform to connect | Zoom",
-  description: "Meeting app",
-  icons: {
-    icon: "/icons/logo.svg",
-  },
-};
+import StreamVideoProvider from '@/providers/StreamClientProvider';
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
+const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
   return (
     <main>
       <StreamVideoProvider>{children}</StreamVideoProvider>

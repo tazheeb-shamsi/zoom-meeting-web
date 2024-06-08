@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import MobileNav from "./MobileNav";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import Image from 'next/image';
+import Link from 'next/link';
+import { SignedIn, UserButton } from '@clerk/nextjs';
+
+import MobileNav from './MobileNav';
 
 const Navbar = () => {
   return (
@@ -10,22 +10,20 @@ const Navbar = () => {
       <Link href="/" className="flex items-center gap-1">
         <Image
           src="/icons/logo.svg"
-          alt="Zoom Logo"
           width={32}
           height={32}
-          priority
+          alt="yoom logo"
           className="max-sm:size-10"
         />
-        <span className="text-[26px] font-extrabold text-white max-sm:hidden">
-          Zoom
-        </span>
+        <p className="text-[26px] font-extrabold text-white max-sm:hidden">
+          YOOM
+        </p>
       </Link>
-
       <div className="flex-between gap-5">
-        {/* Clerk — User Management */}
         <SignedIn>
-          <UserButton />
+          <UserButton afterSignOutUrl="/sign-in" />
         </SignedIn>
+
         <MobileNav />
       </div>
     </nav>

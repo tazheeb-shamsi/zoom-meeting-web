@@ -1,16 +1,18 @@
-import { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { ReactNode } from "react";
+import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
-import { Toaster } from "@/components/ui/toaster";
+import { Inter } from "next/font/google";
+
 import "@stream-io/video-react-sdk/dist/css/styles.css";
-import 'react-datepicker/dist/react-datepicker.css'
+import "react-datepicker/dist/react-datepicker.css";
+import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Platform to connect | Zoom",
-  description: "Meeting app",
+  title: "YOOM",
+  description: "Video calling App",
   icons: {
     icon: "/icons/logo.svg",
   },
@@ -18,29 +20,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
       <ClerkProvider
         appearance={{
           layout: {
-            logoImageUrl: "/icons/yoom-logo.svg",
             socialButtonsVariant: "iconButton",
+            logoImageUrl: "/icons/yoom-logo.svg",
           },
           variables: {
-            colorText: "gray",
+            colorText: "#fff",
             colorPrimary: "#0E78F9",
-            colorBackground: "#1c1f2e",
-            colorInputBackground: "#252a41",
+            colorBackground: "#1C1F2E",
+            colorInputBackground: "#252A41",
             colorInputText: "#fff",
           },
         }}
       >
         <body className={`${inter.className} bg-dark-2`}>
-          {children}
           <Toaster />
+          {children}
         </body>
       </ClerkProvider>
     </html>
