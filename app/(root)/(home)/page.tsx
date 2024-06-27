@@ -21,6 +21,7 @@ const Home = () => {
 
   const { upcomingCalls, isLoading } = useGetCalls();
   if (isLoading) return <Loader />;
+
   // Filter and sort the upcoming calls to find the latest one
   const sortedCalls = upcomingCalls?.sort((a, b) => {
     const dateA = new Date(a.state.startsAt$.source._value);
@@ -28,9 +29,8 @@ const Home = () => {
     return dateA - dateB;
   });
 
-  const calls = sortedCalls?.length > 0 ? sortedCalls[0] : null;
-  const latestCall = calls?.state.startsAt;
-  console.log('-------->', latestCall);
+  const latestCall =
+    sortedCalls?.length > 0 ? sortedCalls[0].state.startsAt : null;
 
   return (
     <section className="size-full flex flex-col gap-10 text-white">
@@ -39,7 +39,7 @@ const Home = () => {
           {latestCall ? (
             <h2 className="glassmorphism max-w-[270px] rounded-md py-2 text-center text-base font-normal">
               <p>Upcoming meeting at</p>
-              <span className='text-red-500 font-bold'>
+              <span className="text-red-500 font-bold">
                 {new Date(latestCall)
                   .toLocaleString('en-US', {
                     month: 'short',
